@@ -25,6 +25,7 @@ mash = {
   movement = { "alt", "ctrl" },   -- ⌥⌃
   resize = { "alt", "cmd" }       -- ⌥⌘
 }
+exit_from_full_screen = true
 
 -- -----------------------------------------------------------------------
 --                            ** Requires **                            --

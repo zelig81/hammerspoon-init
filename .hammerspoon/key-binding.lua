@@ -52,14 +52,17 @@ windowBind(mash.resize, {
 
 -- launch and focus applications with below shortkey
 hs.fnutils.each({
-    { key = "t", app = "iTerm" },
-    { key = "f", app = "Finder" },
-    { key = "escape", app = "Activity Monitor" },
+    { key = "`", app = "iTerm" },
     { key = "c", app = "Google Chrome" },
-    { key = "s", app = "Station" },
-    { key = "x", app = "Slack" },
+    { key = "d", app = "Dictionary" },
+    { key = "escape", app = "Activity Monitor" },
     { key = "m", app = "Meld" },
+    { key = "q", app = "Finder" },
+    { key = "s", app = "Slack" },
+    { key = "t", app = "iTerm" },
     { key = "v", app = "Visual Studio Code" },
+    { key = "w", app = "WhatsApp" },
+    { key = "x", app = "Station" },
     { key = "z", app = "zoom.us" },
 }, function(object)
     launchApp(mash.app, object)
