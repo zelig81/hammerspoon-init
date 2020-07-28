@@ -53,6 +53,7 @@ windowBind(mash.resize, {
 -- launch and focus applications with below shortkey
 hs.fnutils.each({
     { key = "`", app = "iTerm" },
+    { key = "b", app = "Safari" },
     { key = "c", app = "Google Chrome" },
     { key = "d", app = "Dictionary" },
     { key = "escape", app = "Activity Monitor" },
