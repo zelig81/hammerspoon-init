@@ -54,7 +54,8 @@ windowBind(mash.resize, {
 hs.fnutils.each({
     { key = "`", app = "iTerm" },
     { key = "b", app = "Brave Browser" },
-    { key = "c", app = "Google Chrome" },
+    -- { key = "c", app = "Google Chrome" },
+    { key = "c", app = "Calculator" },
     { key = "d", app = "Dictionary" },
     { key = "escape", app = "Activity Monitor" },
     { key = "m", app = "Meld" },
