@@ -53,14 +53,14 @@ windowBind(mash.resize, {
 -- launch and focus applications with below shortkey
 hs.fnutils.each({
     { key = "`", app = "iTerm" },
+    { key = "/", app = "Finder" },
     { key = "a", app = "Authy Desktop" },
     { key = "b", app = "Brave Browser" },
-    -- { key = "c", app = "Google Chrome" },
     { key = "c", app = "muCommander" },
     { key = "d", app = "Dictionary" },
     { key = "escape", app = "Activity Monitor" },
     { key = "m", app = "Meld" },
-    { key = "f", app = "Finder" },
+    { key = "f", app = "Firefox" },
     { key = "q", app = "QuickTime Player" },
     { key = "s", app = "Slack" },
     { key = "t", app = "iTerm" },
