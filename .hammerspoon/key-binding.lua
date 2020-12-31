@@ -60,6 +60,7 @@ hs.fnutils.each({
     { key = "d", app = "Dictionary" },
     { key = "escape", app = "Activity Monitor" },
     { key = "m", app = "Meld" },
+    { key = "n", app = "Numbers" },
     { key = "f", app = "Firefox" },
     { key = "q", app = "QuickTime Player" },
     { key = "s", app = "Slack" },
