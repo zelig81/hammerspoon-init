@@ -58,6 +58,7 @@ hs.fnutils.each({
     { key = "b", app = "Brave Browser" },
     { key = "c", app = "muCommander" },
     { key = "d", app = "Dictionary" },
+    { key = "e", app = "Telegram" },
     { key = "escape", app = "Activity Monitor" },
     { key = "m", app = "Meld" },
     { key = "n", app = "Numbers" },
