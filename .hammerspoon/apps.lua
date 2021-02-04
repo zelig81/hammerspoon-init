@@ -31,8 +31,10 @@ end
 
 local geometry = require "hs.geometry"
 
-function moveToCenterOfWindow(window)
+function moveToCenterOfWindow(window, object)
   local frame = window:frame()
+  -- hs.window.switcher.new{object.key}:nextWindow()
+  -- hs.alert.show('switch')
   hs.mouse.setAbsolutePosition(geometry.rectMidPoint(frame))
 end
 
@@ -40,13 +42,13 @@ function launchApp(basicKey, object)
   hs.hotkey.bind(basicKey, object.key, function()
       hs.application.launchOrFocus(object.app)
       local application = hs.application.get(object.app)
-      hs.alert.show('' .. object.app)
       local window = hs.window.focusedWindow()
+      hs.alert.show('' .. object.app .. '('  ..  window:application():bundleID() .. ')')
       if window ~= nil then
           if exit_from_full_screen == true then
               window:setFullScreen(false)
           end
-          moveToCenterOfWindow(window)
+          moveToCenterOfWindow(window, object)
       end
   end)
 end

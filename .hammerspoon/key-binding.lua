@@ -60,6 +60,7 @@ hs.fnutils.each({
     { key = "d", app = "Dictionary" },
     { key = "e", app = "Telegram" },
     { key = "escape", app = "Activity Monitor" },
+    { key = "l", app = "LibreOffice" },
     { key = "m", app = "Meld" },
     { key = "n", app = "Numbers" },
     { key = "f", app = "Firefox" },
@@ -77,6 +78,10 @@ end)
 hs.hotkey.bind(mash.app, "h", function()
     hs.reload()
 end)
+
+-- hs.hotkey.bind("F18", "t", function()
+--     hs.alert.show('test')
+-- end)
 
 local keymapping_layouts = {}
 for k, v in pairs(hs.keycodes.layouts()) do
