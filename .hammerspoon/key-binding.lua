@@ -79,6 +79,10 @@ hs.hotkey.bind(mash.app, "h", function()
     hs.reload()
 end)
 
+cherry:bindHotkeys({
+  start = {mash.app, "p"}
+})
+
 -- hs.hotkey.bind("F18", "t", function()
 --     hs.alert.show('test')
 -- end)
