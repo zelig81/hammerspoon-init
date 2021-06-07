@@ -71,6 +71,7 @@ hs.fnutils.each({
     { key = "w", app = "WhatsApp" },
     { key = "x", app = "Station" },
     { key = "z", app = "zoom.us" },
+    { key = "4", app = "Skitch" },
 }, function(object)
     launchApp(mash.app, object)
 end)
