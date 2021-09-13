@@ -35,8 +35,23 @@ function moveToCenterOfWindow(window, object)
   local frame = window:frame()
   -- hs.window.switcher.new{object.key}:nextWindow()
   -- hs.alert.show('switch')
-  hs.mouse.setAbsolutePosition(geometry.rectMidPoint(frame))
+  hs.mouse.absolutePosition(geometry.rectMidPoint(frame))
 end
+
+function getWindows(app_bundle_id)
+    if hs.appfinder.appFromName(app_bundle_id) == nil then
+        hs.alert.show(app_bundle_id .. ' app bundle id is not available')
+    else
+        if hs.application(app_bundle_id):isRunning() then
+            local windows = hs.application(app_bundle_id):allWindows()
+            hs.alert.show(app_bundle_id .. ' windows: ('  ..  serializeTable(windows) .. ')')
+            hs.alert.show('number of windows: ' .. #windows)
+        else
+            hs.alert.show(app_bundle_id .. ' is not running')
+        end
+    end
+end
+
 
 function launchApp(basicKey, object)
   hs.hotkey.bind(basicKey, object.key, function()
@@ -44,6 +59,7 @@ function launchApp(basicKey, object)
       local application = hs.application.get(object.app)
       local window = hs.window.focusedWindow()
       hs.alert.show('' .. object.app .. '('  ..  window:application():bundleID() .. ')')
+      -- getWindows('' .. window:application():bundleID())
       if window ~= nil then
           if exit_from_full_screen == true then
               window:setFullScreen(false)

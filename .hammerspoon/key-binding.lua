@@ -62,14 +62,14 @@ hs.fnutils.each({
     { key = "escape", app = "Activity Monitor" },
     { key = "l", app = "LibreOffice" },
     { key = "m", app = "Meld" },
-    { key = "n", app = "Numbers" },
-    { key = "f", app = "Firefox" },
-    { key = "q", app = "QuickTime Player" },
+    -- { key = "n", app = "Numbers" },
+    -- { key = "f", app = "Firefox" },
+    { key = "q", app = "Spotify" },
     { key = "s", app = "Slack" },
     { key = "t", app = "iTerm" },
     { key = "v", app = "Visual Studio Code" },
     { key = "w", app = "WhatsApp" },
-    { key = "x", app = "Station" },
+    -- { key = "x", app = "Station" },
     { key = "z", app = "zoom.us" },
     { key = "4", app = "Skitch" },
 }, function(object)
@@ -78,6 +78,10 @@ end)
 
 hs.hotkey.bind(mash.app, "h", function()
     hs.reload()
+end)
+
+hs.hotkey.bind(mash.app, "y", function()
+    hs.alert.show('list of applications:' .. serializeTable(hs.application.runningApplications()))
 end)
 
 cherry:bindHotkeys({
