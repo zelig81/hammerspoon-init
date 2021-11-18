@@ -55,7 +55,8 @@ hs.fnutils.each({
     { key = "`", app = "iTerm" },
     { key = "/", app = "Finder" },
     { key = "a", app = "Authy Desktop" },
-    { key = "b", app = "Brave Browser" },
+    -- { key = "x", app = "Brave Browser" },
+    { key = "b", app = "Vivaldi" },
     { key = "c", app = "muCommander" },
     { key = "d", app = "Dictionary" },
     { key = "e", app = "Telegram" },
@@ -65,6 +66,7 @@ hs.fnutils.each({
     -- { key = "n", app = "Numbers" },
     -- { key = "f", app = "Firefox" },
     { key = "q", app = "Spotify" },
+    { key = "r", app = "MySqlWorkbench" },
     { key = "s", app = "Slack" },
     { key = "t", app = "iTerm" },
     { key = "v", app = "Visual Studio Code" },
@@ -72,6 +74,7 @@ hs.fnutils.each({
     -- { key = "x", app = "Station" },
     { key = "z", app = "zoom.us" },
     { key = "4", app = "Skitch" },
+    { key = "5", app = "Screenshot" },
 }, function(object)
     launchApp(mash.app, object)
 end)
