@@ -55,8 +55,8 @@ hs.fnutils.each({
     { key = "`", app = "iTerm" },
     { key = "/", app = "Finder" },
     { key = "a", app = "Authy Desktop" },
-    -- { key = "x", app = "Brave Browser" },
-    { key = "b", app = "Vivaldi" },
+    { key = "b", app = "Brave Browser" },
+    -- { key = "b", app = "Vivaldi" },
     { key = "c", app = "muCommander" },
     { key = "d", app = "Dictionary" },
     { key = "e", app = "Telegram" },
@@ -65,6 +65,7 @@ hs.fnutils.each({
     { key = "m", app = "Meld" },
     -- { key = "n", app = "Numbers" },
     -- { key = "f", app = "Firefox" },
+    { key = "p", app = "pgAdmin 4" },
     { key = "q", app = "Spotify" },
     { key = "r", app = "MySqlWorkbench" },
     { key = "s", app = "Slack" },
@@ -87,9 +88,9 @@ hs.hotkey.bind(mash.app, "y", function()
     hs.alert.show('list of applications:' .. serializeTable(hs.application.runningApplications()))
 end)
 
-cherry:bindHotkeys({
-  start = {mash.app, "p"}
-})
+-- cherry:bindHotkeys({
+--   start = {mash.app, "p"}
+-- })
 
 -- hs.hotkey.bind("F18", "t", function()
 --     hs.alert.show('test')
