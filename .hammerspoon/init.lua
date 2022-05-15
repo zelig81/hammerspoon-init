@@ -11,7 +11,7 @@
 -- -----------------------------------------------------------------------
 logger = hs.logger.new("config", "verbose")
 
-cherry = hs.loadSpoon("Cherry")
+-- cherry = hs.loadSpoon("Cherry")
 
 hs.alert.defaultStyle.strokeColor = { white = 0, alpha = 0.75 }
 hs.alert.defaultStyle.textSize = 25
