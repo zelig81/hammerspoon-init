@@ -22,39 +22,38 @@ windowBind(mash.movement, {
 
 -- * Set Window Position on screen
 windowBind(mash.resize, {
-  m = wm.maximizeWindow,    -- ⌥⇧ + M
-  c = wm.centerOnScreen,    -- ⌥⇧ + C
-  left = wm.leftHalf,       -- ⌥⇧ + ←
-  right = wm.rightHalf,     -- ⌥⇧ + →
-  up = wm.topHalf,          -- ⌥⇧ + ↑
-  down = wm.bottomHalf      -- ⌥⇧ + ↓
+  m = wm.maximizeWindow,    -- ⌥⌘ + M
+  c = wm.centerOnScreen,    -- ⌥⌘ + C
+  left = wm.leftHalf,       -- ⌥⌘ + ←
+  right = wm.rightHalf,     -- ⌥⌘ + →
+  up = wm.topHalf,          -- ⌥⌘ + ↑
+  down = wm.bottomHalf      -- ⌥⌘ + ↓
 })
--- -- -- * Set Window Position on screen
--- windowBind({"ctrl", "alt", "shift"}, {
---   left = wm.rightToLeft,      -- ⌃⌥⇧ + ←
---   right = wm.rightToRight,    -- ⌃⌥⇧ + →
---   up = wm.bottomUp,           -- ⌃⌥⇧ + ↑
---   down = wm.bottomDown        -- ⌃⌥⇧ + ↓
--- })
--- -- * Set Window Position on screen
--- windowBind({"alt", "cmd", "shift"}, {
---   left = wm.leftToLeft,      -- ⌥⌘⇧ + ←
---   right = wm.leftToRight,    -- ⌥⌘⇧ + →
---   up = wm.topUp,             -- ⌥⌘⇧ + ↑
---   down = wm.topDown          -- ⌥⌘⇧ + ↓
--- })
+-- * Set Window Position on screen
+windowBind({"ctrl", "alt", "shift"}, {
+  left = wm.rightToLeft,      -- ⌃⌥⇧ + ←
+  right = wm.rightToRight,    -- ⌃⌥⇧ + →
+  up = wm.bottomUp,           -- ⌃⌥⇧ + ↑
+  down = wm.bottomDown        -- ⌃⌥⇧ + ↓
+})
+-- * Set Window Position on screen
+windowBind({"alt", "cmd", "shift"}, {
+  left = wm.leftToLeft,      -- ⌥⌘⇧ + ←
+  right = wm.leftToRight,    -- ⌥⌘⇧ + →
+  up = wm.topUp,             -- ⌥⌘⇧ + ↑
+  down = wm.topDown          -- ⌥⌘⇧ + ↓
+})
 
--- -- * Windows-like cycle
--- windowBind(mash.movement, {
---   left = wm.cycleLeft,          -- ⌥⌃ + ←
---   right = wm.cycleRight          -- ⌥⌃ + →
--- })
+-- * Windows-like cycle
+windowBind(mash.movement, {
+  left = wm.cycleLeft,          -- ⌥⌃ + ←
+  right = wm.cycleRight          -- ⌥⌃ + →
+})
 
 -- launch and focus applications with below shortkey
 hs.fnutils.each({
     { key = "`", app = "iTerm" },
     { key = "=", app = "Finder" },
-    -- { key = "a", app = "Authy Desktop" },
     { key = "b", app = "Brave Browser" },
     -- { key = "b", app = "Vivaldi" },
     { key = "c", app = "muCommander" },
@@ -65,7 +64,7 @@ hs.fnutils.each({
     { key = "m", app = "Meld" },
     { key = "n", app = "Notes" },
     -- { key = "p", app = "pgAdmin 4" },
-    { key = "q", app = "Spotify" },
+    { key = "p", app = "Spotify" },
     -- { key = "r", app = "MySqlWorkbench" },
     { key = "s", app = "Slack" },
     { key = "t", app = "iTerm" },
@@ -83,7 +82,20 @@ hs.hotkey.bind(mash.app, "h", function()
 end)
 
 hs.hotkey.bind(mash.app, "y", function()
-    hs.alert.show('list of applications:' .. serializeTable(hs.application.runningApplications()))
+    style = {
+        strokeWidth  = 2,
+        strokeColor = { white = 1, alpha = 1 },
+        fillColor   = { white = 0, alpha = 0.75 },
+        textColor = { white = 1, alpha = 1 },
+        textFont  = ".AppleSystemUIFont",
+        textSize  = 14,
+        radius = 27,
+        atScreenEdge = 1,
+        fadeInDuration = 0.15,
+        fadeOutDuration = 0.15,
+        padding = nil,
+    }
+    hs.alert.show('list of applications:' .. serializeTable(hs.application.runningApplications()), style)
 end)
 
 -- cherry:bindHotkeys({
