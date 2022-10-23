@@ -23,9 +23,10 @@ hs.window.setShadows(false)
 hs.application.enableSpotlightForNameSearches(true)
 
 mash = {
-  app = { "alt" },                -- ⌥
-  movement = { "alt", "ctrl" },   -- ⌥⌃
-  resize = { "alt", "cmd" }       -- ⌥⌘
+  app = { "alt" },                   -- ⌥
+  movement = { "alt", "ctrl" },      -- ⌥⌃
+  resize = { "alt", "cmd" },         -- ⌥⌘
+  position ={"ctrl", "alt", "shift"} -- ⌃⌥⇧
 }
 exit_from_full_screen = true
 

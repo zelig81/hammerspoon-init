@@ -30,7 +30,7 @@ windowBind(mash.resize, {
   down = wm.bottomHalf      -- ⌥⌘ + ↓
 })
 -- * Set Window Position on screen
-windowBind({"ctrl", "alt", "shift"}, {
+windowBind(mash.position, {
   left = wm.rightToLeft,      -- ⌃⌥⇧ + ←
   right = wm.rightToRight,    -- ⌃⌥⇧ + →
   up = wm.bottomUp,           -- ⌃⌥⇧ + ↑
