@@ -12,6 +12,14 @@
 logger = hs.logger.new("config", "verbose")
 
 -- cherry = hs.loadSpoon("Cherry")
+-- ad = hs.loadSpoon("ArrangeDesktop")
+-- ad.createArrangement()
+-- arrangements = ad._loadConfiguration()
+-- hs.alert.show('arrangements ' .. arrangements)
+-- arrangements
+-- ad.arrange(arrangements)
+-- ad.addMenuItems()
+-- ad._writeConfiguration()
 
 hs.alert.defaultStyle.strokeColor = { white = 0, alpha = 0.75 }
 hs.alert.defaultStyle.textSize = 25
@@ -23,13 +31,15 @@ hs.window.setShadows(false)
 hs.application.enableSpotlightForNameSearches(true)
 
 mash = {
-  app = { "alt" },                   -- ⌥
-  movement = { "alt", "ctrl" },      -- ⌥⌃
-  resize = { "alt", "cmd" },         -- ⌥⌘
-  position ={"ctrl", "alt", "shift"} -- ⌃⌥⇧
+  app = { "alt" },                    -- ⌥
+  movement = { "alt", "ctrl" },       -- ⌥⌃
+  resize = { "alt", "cmd" },          -- ⌥⌘
+  place = { "alt", "cmd", "shift" },  -- ⌥⌘⇧
+  position ={"ctrl", "alt", "shift"}  -- ⌃⌥⇧
 }
-exit_from_full_screen = true
-
+exit_from_full_screen = false
+is_debug = true
+force_refresh_on_space_change = true
 -- -----------------------------------------------------------------------
 --                            ** Requires **                            --
 -- -----------------------------------------------------------------------

@@ -14,16 +14,17 @@ local function windowBind(hyper, keyFuncTable)
   end
 end
 
--- * Move window to screen
-windowBind(mash.movement, {
-  left = wm.throwLeft,
-  right = wm.throwRight
-})
+-- -- * Move window to screen
+-- windowBind(mash.movement, {
+--   left = wm.throwLeft,   -- ⌥⌃ + ←
+--   right = wm.throwRight  -- ⌥⌃ + →
+-- })
 
 -- * Set Window Position on screen
 windowBind(mash.resize, {
   m = wm.maximizeWindow,    -- ⌥⌘ + M
   c = wm.centerOnScreen,    -- ⌥⌘ + C
+  f = wm.toggleFullscreen,  -- ⌥⌘ + F
   left = wm.leftHalf,       -- ⌥⌘ + ←
   right = wm.rightHalf,     -- ⌥⌘ + →
   up = wm.topHalf,          -- ⌥⌘ + ↑
@@ -37,7 +38,7 @@ windowBind(mash.position, {
   down = wm.bottomDown        -- ⌃⌥⇧ + ↓
 })
 -- * Set Window Position on screen
-windowBind({"alt", "cmd", "shift"}, {
+windowBind(mash.place, {
   left = wm.leftToLeft,      -- ⌥⌘⇧ + ←
   right = wm.leftToRight,    -- ⌥⌘⇧ + →
   up = wm.topUp,             -- ⌥⌘⇧ + ↑
@@ -47,10 +48,11 @@ windowBind({"alt", "cmd", "shift"}, {
 -- * Windows-like cycle
 windowBind(mash.movement, {
   left = wm.cycleLeft,          -- ⌥⌃ + ←
-  right = wm.cycleRight          -- ⌥⌃ + →
+  right = wm.cycleRight         -- ⌥⌃ + →
 })
 
 -- launch and focus applications with below shortkey
+
 hs.fnutils.each({
     { key = "`", app = "iTerm" },
     { key = "=", app = "Finder" },
@@ -73,7 +75,7 @@ hs.fnutils.each({
     { key = "w", app = "WhatsApp" },
     { key = "z", app = "zoom.us" },
     { key = "4", app = "Skitch" },
-    { key = "5", app = "Screenshot" },
+    -- { key = "5", app = "Screenshot" },
 }, function(object)
     launchApp(mash.app, object)
 end)
@@ -83,20 +85,8 @@ hs.hotkey.bind(mash.app, "h", function()
 end)
 
 hs.hotkey.bind(mash.app, "y", function()
-    style = {
-        strokeWidth  = 2,
-        strokeColor = { white = 1, alpha = 1 },
-        fillColor   = { white = 0, alpha = 0.75 },
-        textColor = { white = 1, alpha = 1 },
-        textFont  = ".AppleSystemUIFont",
-        textSize  = 14,
-        radius = 27,
-        atScreenEdge = 1,
-        fadeInDuration = 0.15,
-        fadeOutDuration = 0.15,
-        padding = nil,
-    }
-    hs.alert.show('list of applications:' .. serializeTable(hs.application.runningApplications()), style)
+  print('list of applications:' .. serializeTable(hs.application.runningApplications()))
+  print('list of applications:' .. serializeTable(hs.window.allWindows()))
 end)
 
 -- cherry:bindHotkeys({
@@ -107,6 +97,7 @@ end)
 --     hs.alert.show('test')
 -- end)
 
+-- Switcher for keyboard layouts by numbers
 local keymapping_layouts = {}
 for k, v in pairs(hs.keycodes.layouts()) do
     keymapping_layouts[tonumber(k)] = {["key"] = tostring(k), ["layout"] = tostring(v)}

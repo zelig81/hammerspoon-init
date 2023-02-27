@@ -31,45 +31,58 @@ end
 
 local geometry = require "hs.geometry"
 
-function moveToCenterOfWindow(window, object)
+function moveMouseToCenterOfWindow(window, object)
+  if is_debug == true then print("moveMouseToCenterOfWindow") end
   local frame = window:frame()
-  -- hs.window.switcher.new{object.key}:nextWindow()
   -- hs.alert.show('switch')
   hs.mouse.absolutePosition(geometry.rectMidPoint(frame))
 end
 
 function getWindows(app_bundle_id)
-    if hs.appfinder.appFromName(app_bundle_id) == nil then
-        hs.alert.show(app_bundle_id .. ' app bundle id is not available')
+  if is_debug == true then print("getWindows") end
+  if hs.appfinder.appFromName(app_bundle_id) == nil then
+    hs.alert.show(app_bundle_id .. ' app bundle id is not available')
+  else
+    if hs.application(app_bundle_id):isRunning() then
+      local windows = hs.application(app_bundle_id):allWindows()
+      hs.alert.show(app_bundle_id .. ' windows: ('  ..  serializeTable(windows) .. ')')
+      hs.alert.show('number of windows: ' .. #windows)
     else
-        if hs.application(app_bundle_id):isRunning() then
-            local windows = hs.application(app_bundle_id):allWindows()
-            hs.alert.show(app_bundle_id .. ' windows: ('  ..  serializeTable(windows) .. ')')
-            hs.alert.show('number of windows: ' .. #windows)
-        else
-            hs.alert.show(app_bundle_id .. ' is not running')
-        end
+      hs.alert.show(app_bundle_id .. ' is not running')
     end
+  end
 end
 
+hs.window.filter.forceRefreshOnSpaceChange = force_refresh_on_space_change
 
 function launchApp(basicKey, object)
+  if is_debug == true then print("launchApp") end
   hs.hotkey.bind(basicKey, object.key, function()
+    local wf = hs.window.filter.new{object.app}
+    local filtered_windows = wf:getWindows(hs.window.filter.sortByFocused)
+    print('list windows: ' .. serializeTable(filtered_windows))
+    if filtered_windows ~= nil and next(filtered_windows) ~=nil then
+      filtered_windows[1]:focus()
+      print('focus on first filtered window')
+    else
+      print('no visible windows, open a new window of ' .. object.app)
       hs.application.launchOrFocus(object.app)
       local application = hs.application.get(object.app)
       local window = hs.window.focusedWindow()
-      hs.alert.show('' .. object.app .. '('  ..  window:application():bundleID() .. ')')
-      -- getWindows('' .. window:application():bundleID())
       if window ~= nil then
-          if exit_from_full_screen == true then
-              window:setFullScreen(false)
-          end
-          moveToCenterOfWindow(window, object)
+        if exit_from_full_screen == true then
+          window:setFullScreen(false)
+        end
+        moveMouseToCenterOfWindow(window, object)
       end
+    end
+    hs.alert.show('-> ' .. object.app)
+    -- getWindows('' .. window:application():bundleID())
   end)
 end
 
 function setLayout(basicKey, object)
+  if is_debug == true then print("setLayout") end
   hs.hotkey.bind(basicKey, object.key, function()
       previousLayout = hs.keycodes.currentLayout()
       hs.keycodes.setLayout(object.layout)
