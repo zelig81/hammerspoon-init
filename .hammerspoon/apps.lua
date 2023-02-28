@@ -62,18 +62,19 @@ function launchApp(basicKey, object)
     local filtered_windows = wf:getWindows(hs.window.filter.sortByFocused)
     print('list windows: ' .. serializeTable(filtered_windows))
     if filtered_windows ~= nil and next(filtered_windows) ~=nil then
-      filtered_windows[1]:focus()
       print('focus on first filtered window')
+      filtered_windows[1]:focus()
     else
       print('no visible windows, open a new window of ' .. object.app)
       hs.application.launchOrFocus(object.app)
-      local application = hs.application.get(object.app)
       local window = hs.window.focusedWindow()
       if window ~= nil then
         if exit_from_full_screen == true then
           window:setFullScreen(false)
         end
         moveMouseToCenterOfWindow(window, object)
+      else
+        hs.alert.show(object.app .. ' application not found')
       end
     end
     hs.alert.show('-> ' .. object.app)

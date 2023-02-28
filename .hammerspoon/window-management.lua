@@ -152,12 +152,12 @@ module.cycleLeft = function ()
     end
     -- moveToScreen itself
     this.window:moveToScreen(previousScreen)
+    hs.grid.maximizeWindow(this.window)
     -- second part of the workaround
     if wasEnhanced then
       axApp.AXEnhancedUserInterface = true
     end
     -- end of the workaround
-    hs.grid.maximizeWindow(this.window)
   end
 end
 
@@ -170,7 +170,8 @@ module.cycleRight = function ()
   --   module.rightHalf()
   -- else
     local currentIndex = hs.fnutils.indexOf(screenArr, this.screen)
-    local nextScreen = screenArr[(currentIndex - indexDiff + 1) % #hs.screen.allScreens() + indexDiff]
+    local newIndex = (currentIndex - indexDiff + 1) % #hs.screen.allScreens() + indexDiff
+    local nextScreen = screenArr[newIndex]
     print("module.cycleLeft: \ncurrentIndex " .. currentIndex .. "\nindexDiff " .. indexDiff .. "\ncount of screens: " .. #hs.screen.allScreens() .. "\nnewIndex " .. newIndex)
     -- start workaround for Brave moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
@@ -180,12 +181,12 @@ module.cycleRight = function ()
     end
     -- moveToScreen itself
     this.window:moveToScreen(nextScreen, true)
+    hs.grid.maximizeWindow(this.window)
     -- second part of the workaround
     if wasEnhanced then
       axApp.AXEnhancedUserInterface = true
     end
     -- end of the workaround
-    hs.grid.maximizeWindow(this.window)
   end
 end
 

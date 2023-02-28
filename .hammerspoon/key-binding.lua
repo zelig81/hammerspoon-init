@@ -77,7 +77,7 @@ hs.fnutils.each({
     { key = "4", app = "Skitch" },
     -- { key = "5", app = "Screenshot" },
 }, function(object)
-    launchApp(mash.app, object)
+  launchApp(mash.app, object)
 end)
 
 hs.hotkey.bind(mash.app, "h", function()
@@ -89,13 +89,15 @@ hs.hotkey.bind(mash.app, "y", function()
   print('list of applications:' .. serializeTable(hs.window.allWindows()))
 end)
 
+hs.hotkey.bind(mash.app, "u", function()
+  local wf = hs.window.filter.new{'Brave Browser', 'Vivaldi'}
+  local filtered_windows = wf:getWindows(hs.window.filter.sortByFocused)
+  print('list windows: ' .. serializeTable(filtered_windows))
+end)
+
 -- cherry:bindHotkeys({
 --   start = {mash.app, "p"}
 -- })
-
--- hs.hotkey.bind("F18", "t", function()
---     hs.alert.show('test')
--- end)
 
 -- Switcher for keyboard layouts by numbers
 local keymapping_layouts = {}
