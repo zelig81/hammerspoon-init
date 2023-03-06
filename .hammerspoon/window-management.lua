@@ -67,7 +67,7 @@ end
 
 -- Bind new method to windowMeta
 function windowMeta.new()
-  if is_debug == true then print("windowMeta.new()") end
+  if is_debug == true then print("--- windowMeta.new()") end
   local self = setmetatable(windowMeta, {
     -- Treate table like a function
     -- Event listener when windowMeta() is called
@@ -90,37 +90,37 @@ end
 -- -----------------------------------------------------------------------
 
 module.maximizeWindow = function ()
-  if is_debug == true then print("module.maximizeWindow") end
+  if is_debug == true then print("--- module.maximizeWindow") end
   local this = windowMeta.new()
   hs.grid.maximizeWindow(this.window)
 end
 
 module.toggleFullscreen = function ()
-  if is_debug == true then print("module.toggleFullscreen") end
+  if is_debug == true then print("--- module.toggleFullscreen") end
   local this = windowMeta.new()
   this.window:toggleFullScreen()
 end
 
 module.centerOnScreen = function ()
-  if is_debug == true then print("module.centerOnScreen") end
+  if is_debug == true then print("--- module.centerOnScreen") end
   local this = windowMeta.new()
   this.window:centerOnScreen(this.screen)
 end
 
 -- module.throwLeft = function ()
---   if is_debug == true then print("module.throwLeft") end
+--   if is_debug == true then print("--- module.throwLeft") end
 --   local this = windowMeta.new()
 --   this.window:moveOneScreenWest(true, true)
 -- end
 
 -- module.throwRight = function ()
---   if is_debug == true then print("module.throwRight") end
+--   if is_debug == true then print("--- module.throwRight") end
 --   local this = windowMeta.new()
 --   this.window:moveOneScreenEast(true, true)
 -- end
 
 module.leftHalf = function ()
-  if is_debug == true then print("module.leftHalf") end
+  if is_debug == true then print("--- module.leftHalf") end
   local this = windowMeta.new()
   local cell = Cell(0, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
@@ -128,7 +128,7 @@ module.leftHalf = function ()
 end
 
 module.rightHalf = function ()
-  if is_debug == true then print("module.rightHalf") end
+  if is_debug == true then print("--- module.rightHalf") end
   local this = windowMeta.new()
   local cell = Cell(0.5 * this.screenGrid.w, 0, 0.5 * this.screenGrid.w, this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
@@ -136,7 +136,7 @@ end
 
 -- Windows-like cycle left
 module.cycleLeft = function ()
-  if is_debug == true then print("module.cycleLeft") end
+  if is_debug == true then print("--- module.cycleLeft") end
   local this = windowMeta.new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
@@ -163,7 +163,7 @@ end
 
 -- Windows-like cycle right
 module.cycleRight = function ()
-  if is_debug == true then print("module.cycleRight") end
+  if is_debug == true then print("--- module.cycleRight") end
   local this = windowMeta.new()
   -- Check if this window is on left or right
   if this.windowGrid.x == 0 then
@@ -191,21 +191,21 @@ module.cycleRight = function ()
 end
 
 module.topHalf = function ()
-  if is_debug == true then print("module.topHalf") end
+  if is_debug == true then print("--- module.topHalf") end
   local this = windowMeta.new()
   local cell = Cell(0, 0, this.screenGrid.w, 0.5 * this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
 module.bottomHalf = function ()
-  if is_debug == true then print("module.bottomHalf") end
+  if is_debug == true then print("--- module.bottomHalf") end
   local this = windowMeta.new()
   local cell = Cell(0, 0.5 * this.screenGrid.h, this.screenGrid.w, 0.5 * this.screenGrid.h)
   grid.set(this.window, cell, this.screen)
 end
 
 module.rightToLeft = function ()
-  if is_debug == true then print("module.rightToLeft") end
+  if is_debug == true then print("--- module.rightToLeft") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w - 1, this.windowGrid.h)
   if this.windowGrid.w > 1 then
@@ -216,7 +216,7 @@ module.rightToLeft = function ()
 end
 
 module.rightToRight = function ()
-  if is_debug == true then print("module.rightToRight") end
+  if is_debug == true then print("--- module.rightToRight") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w + 1, this.windowGrid.h)
   if this.windowGrid.w < this.screenGrid.w - this.windowGrid.x then
@@ -227,7 +227,7 @@ module.rightToRight = function ()
 end
 
 module.bottomUp = function ()
-  if is_debug == true then print("module.bottomUp") end
+  if is_debug == true then print("--- module.bottomUp") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w, this.windowGrid.h - 1)
   if this.windowGrid.h > 1 then
@@ -238,7 +238,7 @@ module.bottomUp = function ()
 end
 
 module.bottomDown = function ()
-  if is_debug == true then print("module.bottomDown") end
+  if is_debug == true then print("--- module.bottomDown") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y, this.windowGrid.w, this.windowGrid.h + 1)
   if this.windowGrid.h < this.screenGrid.h - this.windowGrid.y then
@@ -249,7 +249,7 @@ module.bottomDown = function ()
 end
 
 module.leftToLeft = function ()
-  if is_debug == true then print("module.leftToLeft") end
+  if is_debug == true then print("--- module.leftToLeft") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x - 1, this.windowGrid.y, this.windowGrid.w + 1, this.windowGrid.h)
   if this.windowGrid.x > 0 then
@@ -260,7 +260,7 @@ module.leftToLeft = function ()
 end
 
 module.leftToRight = function ()
-  if is_debug == true then print("module.leftToRight") end
+  if is_debug == true then print("--- module.leftToRight") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x + 1, this.windowGrid.y, this.windowGrid.w - 1, this.windowGrid.h)
   if this.windowGrid.w > 1 then
@@ -271,7 +271,7 @@ module.leftToRight = function ()
 end
 
 module.topUp = function ()
-  if is_debug == true then print("module.topUp") end
+  if is_debug == true then print("--- module.topUp") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y - 1, this.windowGrid.w, this.windowGrid.h + 1)
   if this.windowGrid.y > 0 then
@@ -282,7 +282,7 @@ module.topUp = function ()
 end
 
 module.topDown = function ()
-  if is_debug == true then print("module.topDown") end
+  if is_debug == true then print("--- module.topDown") end
   local this = windowMeta.new()
   local cell = Cell(this.windowGrid.x, this.windowGrid.y + 1, this.windowGrid.w, this.windowGrid.h - 1)
   if this.windowGrid.h > 1 then

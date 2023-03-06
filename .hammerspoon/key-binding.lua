@@ -58,7 +58,7 @@ hs.fnutils.each({
     { key = "=", app = "Finder" },
     { key = "b", app = "Brave Browser" },
     -- { key = "b", app = "Vivaldi" },
-    { key = "c", app = "muCommander" },
+    -- { key = "c", app = "muCommander" },
     { key = "d", app = "Dictionary" },
     { key = "e", app = "Telegram" },
     { key = "escape", app = "Activity Monitor" },
@@ -71,10 +71,10 @@ hs.fnutils.each({
     -- { key = "r", app = "MySqlWorkbench" },
     { key = "s", app = "Slack" },
     { key = "t", app = "iTerm" },
-    { key = "v", app = "Visual Studio Code" },
+    { key = "v", app = "Visual Studio Code", app_name = "Code" },
     { key = "w", app = "WhatsApp" },
-    { key = "z", app = "zoom.us" },
-    { key = "4", app = "Skitch" },
+    { key = "z", app = "zoom.us", app_name = "Zoom" },
+    { key = "4", app = "Skitch", app_name = "Skitch Helper" },
     -- { key = "5", app = "Screenshot" },
 }, function(object)
   launchApp(mash.app, object)
@@ -85,14 +85,19 @@ hs.hotkey.bind(mash.app, "h", function()
 end)
 
 hs.hotkey.bind(mash.app, "y", function()
-  print('list of applications:' .. serializeTable(hs.application.runningApplications()))
-  print('list of applications:' .. serializeTable(hs.window.allWindows()))
+  local running_applications = hs.application.runningApplications()
+  print('map app to bunle:' .. serializeTable(running_applications))
+  print('list of windows:' .. serializeTable(hs.window.allWindows()))
 end)
 
 hs.hotkey.bind(mash.app, "u", function()
   local wf = hs.window.filter.new{'Brave Browser', 'Vivaldi'}
   local filtered_windows = wf:getWindows(hs.window.filter.sortByFocused)
   print('list windows: ' .. serializeTable(filtered_windows))
+  local all_spaces = hs.spaces.allSpaces()
+  print("all spaces " .. serializeTable(all_spaces))
+  local myTable = hs.spaces.windowsForSpace(27)
+  print("my table: " .. serializeTable(myTable))
 end)
 
 -- cherry:bindHotkeys({

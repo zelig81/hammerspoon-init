@@ -32,23 +32,23 @@ end
 local geometry = require "hs.geometry"
 
 function moveMouseToCenterOfWindow(window, object)
-  if is_debug == true then print("moveMouseToCenterOfWindow") end
+  if is_debug == true then print("--- moveMouseToCenterOfWindow") end
   local frame = window:frame()
   -- hs.alert.show('switch')
   hs.mouse.absolutePosition(geometry.rectMidPoint(frame))
 end
 
 function getWindows(app_bundle_id)
-  if is_debug == true then print("getWindows") end
+  if is_debug == true then print("--- getWindows") end
   if hs.appfinder.appFromName(app_bundle_id) == nil then
-    hs.alert.show(app_bundle_id .. ' app bundle id is not available')
+    print(app_bundle_id .. ' app bundle id is not available')
   else
     if hs.application(app_bundle_id):isRunning() then
       local windows = hs.application(app_bundle_id):allWindows()
-      hs.alert.show(app_bundle_id .. ' windows: ('  ..  serializeTable(windows) .. ')')
-      hs.alert.show('number of windows: ' .. #windows)
+      print(app_bundle_id .. ' windows: ('  ..  serializeTable(windows) .. ')')
+      print('number of windows: ' .. #windows)
     else
-      hs.alert.show(app_bundle_id .. ' is not running')
+      print(app_bundle_id .. ' is not running')
     end
   end
 end
@@ -56,34 +56,44 @@ end
 hs.window.filter.forceRefreshOnSpaceChange = force_refresh_on_space_change
 
 function launchApp(basicKey, object)
-  if is_debug == true then print("launchApp") end
+  if is_debug == true then print("--- launchApp") end
   hs.hotkey.bind(basicKey, object.key, function()
-    local wf = hs.window.filter.new{object.app}
-    local filtered_windows = wf:getWindows(hs.window.filter.sortByFocused)
-    print('list windows: ' .. serializeTable(filtered_windows))
-    if filtered_windows ~= nil and next(filtered_windows) ~=nil then
-      print('focus on first filtered window')
-      filtered_windows[1]:focus()
-    else
-      print('no visible windows, open a new window of ' .. object.app)
-      hs.application.launchOrFocus(object.app)
-      local window = hs.window.focusedWindow()
-      if window ~= nil then
-        if exit_from_full_screen == true then
-          window:setFullScreen(false)
-        end
-        moveMouseToCenterOfWindow(window, object)
-      else
-        hs.alert.show(object.app .. ' application not found')
-      end
+    local current_window = hs.window.focusedWindow()
+    print("focused windows's app: " .. current_window:application():name())
+    local app_name = object.app
+    if object.app_name ~= nil then
+      app_name = object.app_name
     end
-    hs.alert.show('-> ' .. object.app)
+
+    if current_window:application():name() == app_name then
+      local wf = hs.window.filter.new{app_name}
+      local filtered_windows = wf:getWindows(hs.window.filter.sortByFocused)
+      print("list of the app's windows: " .. serializeTable(filtered_windows))
+      if filtered_windows ~= nil and next(filtered_windows) ~=nil then
+        print('focus on first filtered window')
+        current_window = filtered_windows[1]:focus()
+      else
+        hs.alert.show('ERROR switching filtered windows')
+        print('ERROR switching filtered windows')
+      end
+    else
+      print('the app is not launched, open a new window of ' .. object.app)
+      hs.application.launchOrFocus(object.app)
+      current_window = hs.window.focusedWindow()
+    end
+
+    if current_window ~= nil and exit_from_full_screen == true then
+      current_window:setFullScreen(false)
+    end
+
+    moveMouseToCenterOfWindow(current_window, object)
+    hs.alert.show('-> ' .. object.app, current_window:screen())
     -- getWindows('' .. window:application():bundleID())
   end)
 end
 
 function setLayout(basicKey, object)
-  if is_debug == true then print("setLayout") end
+  if is_debug == true then print("--- setLayout") end
   hs.hotkey.bind(basicKey, object.key, function()
       previousLayout = hs.keycodes.currentLayout()
       hs.keycodes.setLayout(object.layout)
