@@ -54,7 +54,7 @@ windowBind(mash.movement, {
 -- launch and focus applications with below shortkey
 
 hs.fnutils.each({
-    { key = "`", app = "iTerm" },
+    { key = "`", app = "iTerm", app_name = "iTerm2" },
     { key = "=", app = "Finder" },
     { key = "b", app = "Brave Browser" },
     -- { key = "b", app = "Vivaldi" },
@@ -70,7 +70,7 @@ hs.fnutils.each({
     { key = "p", app = "Spotify" },
     -- { key = "r", app = "MySqlWorkbench" },
     { key = "s", app = "Slack" },
-    { key = "t", app = "iTerm" },
+    { key = "t", app = "iTerm", app_name = "iTerm2" },
     { key = "v", app = "Visual Studio Code", app_name = "Code" },
     { key = "w", app = "WhatsApp" },
     { key = "z", app = "zoom.us", app_name = "Zoom" },
@@ -96,8 +96,8 @@ hs.hotkey.bind(mash.app, "u", function()
   print('list windows: ' .. serializeTable(filtered_windows))
   local all_spaces = hs.spaces.allSpaces()
   print("all spaces " .. serializeTable(all_spaces))
-  local myTable = hs.spaces.windowsForSpace(27)
-  print("my table: " .. serializeTable(myTable))
+  -- local myTable = hs.spaces.windowsForSpace(27)
+  -- print("my table: " .. serializeTable(myTable))
 end)
 
 -- cherry:bindHotkeys({

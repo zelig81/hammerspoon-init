@@ -147,14 +147,14 @@ module.cycleLeft = function ()
     -- start workaround for Brave moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
     local wasEnhanced = axApp.AXEnhancedUserInterface
-    if wasEnhanced then
+    if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false
     end
     -- moveToScreen itself
     this.window:moveToScreen(previousScreen)
     hs.grid.maximizeWindow(this.window)
     -- second part of the workaround
-    if wasEnhanced then
+    if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = true
     end
     -- end of the workaround
@@ -176,15 +176,15 @@ module.cycleRight = function ()
     -- start workaround for Brave moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
     local wasEnhanced = axApp.AXEnhancedUserInterface
-    if wasEnhanced then
+    if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false
     end
     -- moveToScreen itself
     this.window:moveToScreen(nextScreen, true)
     hs.grid.maximizeWindow(this.window)
     -- second part of the workaround
-    if wasEnhanced then
-      axApp.AXEnhancedUserInterface = true
+    if wasEnhanced and is_browser[this.window:application():name()] then
+      axApp.AXEnhancedUserInterface = false
     end
     -- end of the workaround
   end

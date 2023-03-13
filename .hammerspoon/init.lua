@@ -44,9 +44,10 @@ force_refresh_on_space_change = true
 --                            ** Requires **                            --
 -- -----------------------------------------------------------------------
 
+require("helpers")
 require("window-management")
 require("apps")
 require("key-binding")
 
-
+is_browser = Set {'Brave Browser', 'Vivaldi'}
 hs.alert.show('Hammerspoon config reload')
