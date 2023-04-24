@@ -3,8 +3,10 @@ local geometry = require "hs.geometry"
 function moveMouseToCenterOfWindow(window, object)
   if is_debug == true then print("--- moveMouseToCenterOfWindow") end
   local frame = window:frame()
-  -- hs.alert.show('switch')
-  hs.mouse.absolutePosition(geometry.rectMidPoint(frame))
+  if hs.mouse.getCurrentScreen() ~= window:screen() then
+    hs.alert.show('move mouse to chosen window')
+    hs.mouse.absolutePosition(geometry.rectMidPoint(frame))
+  end
 end
 
 function getWindows(app_bundle_id)

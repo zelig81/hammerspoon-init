@@ -57,7 +57,7 @@ hs.fnutils.each({
     { key = "`", app = "iTerm", app_name = "iTerm2" },
     { key = "=", app = "Finder" },
     { key = "b", app = "Brave Browser" },
-    -- { key = "b", app = "Vivaldi" },
+    { key = "g", app = "Vivaldi" },
     -- { key = "c", app = "muCommander" },
     { key = "d", app = "Dictionary" },
     { key = "e", app = "Telegram" },
