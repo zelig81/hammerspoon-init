@@ -73,6 +73,7 @@ hs.fnutils.each({
     { key = "t", app = "iTerm", app_name = "iTerm2" },
     { key = "v", app = "Visual Studio Code", app_name = "Code" },
     { key = "w", app = "WhatsApp" },
+    { key = "x", app = "Google Meet" },
     { key = "z", app = "zoom.us", app_name = "Zoom" },
     { key = "4", app = "Skitch", app_name = "Skitch Helper" },
     -- { key = "5", app = "Screenshot" },

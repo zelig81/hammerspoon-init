@@ -92,7 +92,7 @@ end
 module.maximizeWindow = function ()
   if is_debug == true then print("--- module.maximizeWindow") end
   local this = windowMeta.new()
-  hs.grid.maximizeWindow(this.window)
+  grid.maximizeWindow(this.window)
 end
 
 module.toggleFullscreen = function ()
@@ -144,7 +144,7 @@ module.cycleLeft = function ()
     local newIndex = (currentIndex - indexDiff - 1) % #hs.screen.allScreens() + indexDiff
     local previousScreen = screenArr[newIndex]
     print("module.cycleLeft: \ncurrentIndex " .. currentIndex .. "\nindexDiff " .. indexDiff .. "\ncount of screens: " .. #hs.screen.allScreens() .. "\nnewIndex " .. newIndex)
-    -- start workaround for Brave moveToScreen issue
+    -- start workaround for WebKit based applications moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
     local wasEnhanced = axApp.AXEnhancedUserInterface
     if wasEnhanced and is_browser[this.window:application():name()] then
@@ -152,7 +152,7 @@ module.cycleLeft = function ()
     end
     -- moveToScreen itself
     this.window:moveToScreen(previousScreen)
-    hs.grid.maximizeWindow(this.window)
+    grid.maximizeWindow(this.window)
     -- second part of the workaround
     if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = true
@@ -173,7 +173,7 @@ module.cycleRight = function ()
     local newIndex = (currentIndex - indexDiff + 1) % #hs.screen.allScreens() + indexDiff
     local nextScreen = screenArr[newIndex]
     print("module.cycleLeft: \ncurrentIndex " .. currentIndex .. "\nindexDiff " .. indexDiff .. "\ncount of screens: " .. #hs.screen.allScreens() .. "\nnewIndex " .. newIndex)
-    -- start workaround for Brave moveToScreen issue
+    -- start workaround for WebKit based applications moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
     local wasEnhanced = axApp.AXEnhancedUserInterface
     if wasEnhanced and is_browser[this.window:application():name()] then
@@ -181,7 +181,7 @@ module.cycleRight = function ()
     end
     -- moveToScreen itself
     this.window:moveToScreen(nextScreen, true)
-    hs.grid.maximizeWindow(this.window)
+    grid.maximizeWindow(this.window)
     -- second part of the workaround
     if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false

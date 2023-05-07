@@ -51,6 +51,7 @@ function launchApp(basicKey, object)
       print('the app is not in focus or is not launched, launch or focus on ' .. object.app)
       hs.application.launchOrFocus(object.app)
       current_window = hs.window.focusedWindow()
+      hs.grid.maximizeWindow(current_window)
     end
 
     if current_window ~= nil and exit_from_full_screen == true then
