@@ -4,7 +4,8 @@ function moveMouseToCenterOfWindow(window, object)
   if is_debug == true then print("--- moveMouseToCenterOfWindow") end
   local frame = window:frame()
   if hs.mouse.getCurrentScreen() ~= window:screen() then
-    hs.alert.show('move mouse to chosen window')
+    current_window = hs.window.focusedWindow()
+    hs.alert.show('move mouse to chosen window', current_window:screen())
     hs.mouse.absolutePosition(geometry.rectMidPoint(frame))
   end
 end
