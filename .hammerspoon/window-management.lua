@@ -151,8 +151,16 @@ module.cycleLeft = function ()
       axApp.AXEnhancedUserInterface = false
     end
     -- moveToScreen itself
+    local wasFullScreen = this.window:isFullScreen()
+    if wasFullScreen then
+      this.window:setFullScreen(false)
+    end
     this.window:moveToScreen(previousScreen)
-    grid.maximizeWindow(this.window)
+    if wasFullScreen then
+      this.window:setFullScreen(true)
+    else
+      grid.maximizeWindow(this.window)
+    end
     -- second part of the workaround
     if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = true
@@ -180,8 +188,16 @@ module.cycleRight = function ()
       axApp.AXEnhancedUserInterface = false
     end
     -- moveToScreen itself
+    local wasFullScreen = this.window:isFullScreen()
+    if wasFullScreen then
+      this.window:setFullScreen(false)
+    end
     this.window:moveToScreen(nextScreen, true)
-    grid.maximizeWindow(this.window)
+    if wasFullScreen then
+      this.window:setFullScreen(true)
+    else
+      grid.maximizeWindow(this.window)
+    end
     -- second part of the workaround
     if wasEnhanced and is_browser[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false
