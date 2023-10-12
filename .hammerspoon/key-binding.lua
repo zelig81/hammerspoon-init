@@ -63,7 +63,7 @@ hs.fnutils.each({
     { key = "e", app = "Telegram" },
     { key = "escape", app = "Activity Monitor" },
     -- { key = "l", app = "LibreOffice" },
-    { key = "m", app = "Meld" },
+    { key = "m", app = "KDiff3" },
     -- { key = "n", app = "Notion" },
     -- { key = "n", app = "Notes" },
     { key = "o", app = "Opera" },
