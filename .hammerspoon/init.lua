@@ -49,5 +49,5 @@ require("window-management")
 require("apps")
 require("key-binding")
 
-is_browser = Set {'Brave Browser', 'Vivaldi', 'Google Meet', 'Opera', 'Google Chrome', 'Firefox', 'Safari', 'Arc'}
+is_browser = Set {'Brave Browser', 'Vivaldi', 'Google Meet', 'Opera', 'Google Chrome', 'Firefox', 'Safari', 'Arc', 'Slack'}
 hs.alert.show('Hammerspoon config reload')
