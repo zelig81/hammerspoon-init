@@ -57,7 +57,7 @@ hs.fnutils.each({
     { key = "`", app = "iTerm", app_name = "iTerm2" },
     { key = "=", app = "Finder" },
     { key = "b", app = "Brave Browser" },
-    { key = "r", app = "Arc" },
+    -- { key = "r", app = "Arc" },
     { key = "g", app = "Vivaldi" },
     -- { key = "c", app = "muCommander" },
     { key = "d", app = "Reverso" },
@@ -85,6 +85,23 @@ end)
 
 hs.hotkey.bind(mash.app, "h", function()
     hs.reload()
+end)
+
+-- replacement function
+hs.hotkey.bind(mash.app, "r", function()
+  hs.eventtap.keyStroke({"cmd"}, "c")
+  local current_content = hs.pasteboard.getContents()
+  print('current content: [' .. current_content .. ']')
+  -- local js = 'node replacer.js'
+  -- local handle = io.popen(js)
+  -- handle:close()
+
+
+  -- current_content = string.gsub(current_content, "(.)Content", "!%1CONTENT")
+  current_content = string.gsub(current_content, "job=\"$job\"", "app=\"$app\"")
+  current_content = string.lower(current_content)
+  print('new content: [' .. current_content .. ']')
+  -- hs.eventtap.keyStroke({"cmd"}, "v")
 end)
 
 hs.hotkey.bind(mash.app, "y", function()
