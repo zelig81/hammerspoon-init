@@ -98,10 +98,11 @@ hs.hotkey.bind(mash.app, "r", function()
 
 
   -- current_content = string.gsub(current_content, "(.)Content", "!%1CONTENT")
-  current_content = string.gsub(current_content, "job=\"$job\"", "app=\"$app\"")
+  -- current_content = string.gsub(current_content, "job=\"$job\"", "app=\"$app\"")
   current_content = string.lower(current_content)
   print('new content: [' .. current_content .. ']')
-  -- hs.eventtap.keyStroke({"cmd"}, "v")
+  hs.pasteboard.setContents(current_content)
+  hs.eventtap.keyStroke({"cmd"}, "v")
 end)
 
 hs.hotkey.bind(mash.app, "y", function()
