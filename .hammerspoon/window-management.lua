@@ -84,7 +84,7 @@ function windowMeta.new()
   return self
 end
 
--- -----------------------------------------------------------------------
+-----------------------------------------------------------------------
 --                   ** ALERT: GEEKS ONLY, GLHF  :C **                  --
 --            ** Keybinding configurations locate at bottom **          --
 -- -----------------------------------------------------------------------
@@ -147,7 +147,7 @@ module.cycleLeft = function ()
     -- start workaround for WebKit based applications moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
     local wasEnhanced = axApp.AXEnhancedUserInterface
-    if wasEnhanced and is_browser[this.window:application():name()] then
+    if wasEnhanced and is_enhanced[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false
     end
     -- moveToScreen itself
@@ -159,10 +159,10 @@ module.cycleLeft = function ()
     if wasFullScreen then
       this.window:setFullScreen(true)
     else
-      grid.maximizeWindow(this.window)
+      module.maximizeWindow()
     end
     -- second part of the workaround
-    if wasEnhanced and is_browser[this.window:application():name()] then
+    if wasEnhanced and is_enhanced[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = true
     end
     -- end of the workaround
@@ -184,7 +184,7 @@ module.cycleRight = function ()
     -- start workaround for WebKit based applications moveToScreen issue
     local axApp = hs.axuielement.applicationElement(this.window:application())
     local wasEnhanced = axApp.AXEnhancedUserInterface
-    if wasEnhanced and is_browser[this.window:application():name()] then
+    if wasEnhanced and is_enhanced[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false
     end
     -- moveToScreen itself
@@ -196,10 +196,10 @@ module.cycleRight = function ()
     if wasFullScreen then
       this.window:setFullScreen(true)
     else
-      grid.maximizeWindow(this.window)
+      module.maximizeWindow()
     end
     -- second part of the workaround
-    if wasEnhanced and is_browser[this.window:application():name()] then
+    if wasEnhanced and is_enhanced[this.window:application():name()] then
       axApp.AXEnhancedUserInterface = false
     end
     -- end of the workaround
