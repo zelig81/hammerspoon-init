@@ -69,7 +69,7 @@ hs.fnutils.each({
     -- { key = "n", app = "Notes" },
     { key = "o", app = "Opera" },
     -- { key = "p", app = "pgAdmin 4" },
-    -- { key = "p", app = "Spotify" },
+    { key = "p", app = "Spotify" },
     -- { key = "r", app = "MySqlWorkbench" },
     { key = "s", app = "Slack" },
     { key = "t", app = "iTerm", app_name = "iTerm2" },
