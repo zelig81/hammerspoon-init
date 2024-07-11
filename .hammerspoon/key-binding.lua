@@ -56,8 +56,8 @@ windowBind(mash.movement, {
 hs.fnutils.each({
     { key = "`", app = "iTerm", app_name = "iTerm2" },
     { key = "=", app = "Finder" },
+    -- { key = "a", app = "Arc" },
     { key = "b", app = "Brave Browser" },
-    -- { key = "r", app = "Arc" },
     { key = "g", app = "Vivaldi" },
     -- { key = "c", app = "muCommander" },
     { key = "d", app = "Reverso" },
@@ -67,7 +67,7 @@ hs.fnutils.each({
     { key = "m", app = "KDiff3" },
     { key = "n", app = "Notion" },
     -- { key = "n", app = "Notes" },
-    { key = "o", app = "Opera" },
+    -- { key = "o", app = "Opera" },
     -- { key = "p", app = "pgAdmin 4" },
     { key = "p", app = "Spotify" },
     -- { key = "r", app = "MySqlWorkbench" },
