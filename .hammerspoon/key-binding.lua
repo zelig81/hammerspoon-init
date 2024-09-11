@@ -106,9 +106,7 @@ hs.hotkey.bind(mash.app, "r", function()
 end)
 
 hs.hotkey.bind(mash.app, "y", function()
-  local running_applications = hs.application.runningApplications()
-  print('map app to bunle:' .. serializeTable(running_applications))
-  print('list of windows:' .. serializeTable(hs.window.allWindows()))
+  hs.spotify.displayCurrentTrack()
 end)
 
 hs.hotkey.bind(mash.app, "u", function()
