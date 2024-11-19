@@ -38,8 +38,10 @@ mash = {
   position ={"ctrl", "alt", "shift"}  -- ⌃⌥⇧
 }
 exit_from_full_screen = false
-is_debug = true
+is_debug = false
 force_refresh_on_space_change = true
+is_spotify_ads_muter_enabled = true
+spotify_ads_muter_interval = 1
 -- -----------------------------------------------------------------------
 --                            ** Requires **                            --
 -- -----------------------------------------------------------------------
@@ -48,6 +50,7 @@ require("helpers")
 require("window-management")
 require("apps")
 require("key-binding")
+-- require("spotify-ads")
 
 is_enhanced = Set { 'Brave Browser', 'Vivaldi', 'Google Meet', 'Opera', 'Google Chrome', 'Firefox', 'Safari', 'Arc', 'Slack', 'Code', 'iTerm2'}
 hs.alert.show('Hammerspoon config reload')

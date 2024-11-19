@@ -58,7 +58,9 @@ hs.fnutils.each({
     { key = "=", app = "Finder" },
     -- { key = "a", app = "Arc" },
     { key = "b", app = "Brave Browser" },
-    { key = "g", app = "Vivaldi" },
+    -- { key = "g", app = "Arc" },
+    -- { key = "g", app = "Vivaldi" },
+    { key = "g", app = "Firefox" },
     -- { key = "c", app = "muCommander" },
     { key = "d", app = "Reverso" },
     { key = "e", app = "Telegram" },
@@ -84,7 +86,7 @@ hs.fnutils.each({
 end)
 
 hs.hotkey.bind(mash.app, "h", function()
-    hs.reload()
+  hs.reload()
 end)
 
 -- replacement function
@@ -104,9 +106,30 @@ hs.hotkey.bind(mash.app, "r", function()
   hs.pasteboard.setContents(current_content)
   hs.eventtap.keyStroke({"cmd"}, "v")
 end)
-
 hs.hotkey.bind(mash.app, "y", function()
   hs.spotify.displayCurrentTrack()
+
+  hs.task.new("/usr/local/bin/dash", function(_code, stdout, stderr)
+    callback(stdout)
+  end, {cmd, args}):start():waitUntilExit()
+
+  -- NOTE: timer.waitUntil is like 'await' in javascript
+  hs.timer.waitUntil(winIdxIsSet, function() return data end)
+
+  -- Checker func to confirm that win.stackIdx is set
+  -- For hs.timer.waitUntil
+  -- NOTE: Temporarily using hs.task:waitUntilExit() to accomplish the
+  -- same thing
+  function winIdxIsSet()
+    if win.stackIdx ~= nil then
+        return true
+    end
+  end
+  local handle = io.popen('pgrep -l -f "sh /Users/ilya/MuteSpotifyAds/NoAdsSpotify.sh"')
+  local stdout = handle:read()
+  print("result of command: " .. stdout)
+  local success = handle:close()
+
 end)
 
 hs.hotkey.bind(mash.app, "u", function()
